@@ -58,10 +58,10 @@ public class PYGian {
         //productora.agregarEvento(evento5);
         
         boolean salir = false;
-
+        //Esto es la funcion del menu principal donde se van a tener las 3 opciones a escoger del proyecto, si desea agregar usuarios, editar eventos o reservaciones
         while (!salir) {
             int opcion = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Bienvenidos a Producciones Palace\n" +
+                    "Bienvenido a Producciones Palace\n" +
                     "Selecciona una opción:\n" +
                     "1. Usuarios\n" +
                     "2. Eventos\n" +

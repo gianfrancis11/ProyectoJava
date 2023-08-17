@@ -21,27 +21,27 @@ public class Productora {
     private boolean estaLogeado;
     private String usuarioLogeado;
     
-
+// Costructor de la clase productora
     public Productora() {
         this.usuarios = new LinkedList<>();
         this.eventos = new LinkedList<>();
         this.estaLogeado = false;      
         this.usuarioLogeado = "";  
     }
-
+// Funcion para agregar los usuarios a la lista 
     public void agregarUsuario(Usuario usuario) {
         usuarios.add(usuario);
     }
-    
+    // Funcion para agregar los eventos a la lista 
     public void agregarEvento(Evento evento) {
         eventos.add(evento);
     }
-
+// Funcion en la cual se verifica soi el usuario esta logeado
     public void logear(String usuario){
         this.estaLogeado = true;
         this.usuarioLogeado = usuario;
     }
-    
+    // Comparativo para saber si el usuario existe en la lista 
     public Usuario consultarUsuario(String usuario) {
         for (Usuario u : usuarios) {
             if (u.getUsuario().equals(usuario)) {
@@ -50,7 +50,7 @@ public class Productora {
         }
         return null; // Si no se encuentra el usuario
     }
-    
+    // Disponibilidad de los asientos disponibles en el evento
     public Boolean consultarNombreUsuario(String usuario) {
         for (Usuario u : usuarios) {
             if (u.getUsuario().equals(usuario)) {
@@ -59,7 +59,7 @@ public class Productora {
         }
         return false; // Si no se encuentra el usuario
     }
-    
+    // Funcion para realizar la reservacion del espacio
     public String getEspaciosEvento(int eventoSeleccionado){
         int[] espacios = eventos.get(eventoSeleccionado).getAsientosDisponibles();
 
@@ -75,7 +75,7 @@ public class Productora {
         }
         return resultado;
     }
-    
+    // Funcion en la cual el arreglo se verifica si tiene o no elementos almacenados
     static boolean contains(int[] arr, int element) {
         for (int value : arr) {
             if (value == element) {
@@ -84,7 +84,7 @@ public class Productora {
         }
         return false;
     }
-    
+    // Reservaciones de los espacios 
     public String reservarEspacios(int eventoSeleccionado, String seleccionEspacios) {
         String[] arregloAsientos = seleccionEspacios.split(",");
         Evento evento = eventos.get(eventoSeleccionado);
@@ -129,7 +129,7 @@ public class Productora {
         
         return "Se han reservado con éxito los espacios.";
     }
-    
+    // Funcion para mostrar los usarios ya almacenados
     public void mostrarNombresUsuarios() {
         System.out.println("Nombres de usuarios guardados:");
         for (Usuario u : usuarios) {
@@ -145,7 +145,7 @@ public class Productora {
             }
         }
     }
-    
+    // Funcion Eventos que se encuentran activos
     public String getStringEventos() {
         String resultado = "";
         int counter = 1;
@@ -157,7 +157,7 @@ public class Productora {
         }
         return resultado;
     }
-
+// Funcion para editar los detalles
     public void editarEvento(LocalDate fechaEvento, String nuevaDireccion, String nuevaCiudad) {
         for (Evento e : eventos) {
             if (e.getFecha().equals(fechaEvento)) {
@@ -169,7 +169,7 @@ public class Productora {
         }
         JOptionPane.showMessageDialog(null, "Evento no encontrado."); 
     }
-    
+    // Funcion para quitar un evento
     public void inactivarEvento(LocalDate fechaEvento) {
         for (Evento e : eventos) {
             if (e.getFecha().equals(fechaEvento)) {
@@ -180,7 +180,7 @@ public class Productora {
         }
         JOptionPane.showMessageDialog(null, "Evento no encontrado."); 
     }
-    
+    //Función para gestionar eventos (agregar, editar, inactivar, mostrar)
     public void iniciarEventos(Productora productora) {
             try{
                 String opcion = JOptionPane.showInputDialog(
@@ -271,7 +271,7 @@ public class Productora {
             }
         
     }
-
+// Función para gestionar usuarios (agregar, consultar, iniciar sesión)
     public static void iniciarUsuarios(Productora productora) {
             try{
                 int opcion = Integer.parseInt(JOptionPane.showInputDialog(
@@ -348,7 +348,7 @@ public class Productora {
             }
         
     }
-    
+    // Función para gestionar la reserva de espacios para un evento
     public static void iniciarFactura(Productora productora) {
         if (productora.estaLogeado){
             String opcionSeleccionada = JOptionPane.showInputDialog(productora.getStringEventos()+ "\nIngrese el numero del evento a reservar");
